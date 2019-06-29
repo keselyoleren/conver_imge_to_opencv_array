@@ -1,0 +1,42 @@
+{% extends 'layouts/main.html' %}
+{% block content %}
+
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Array image opencv to image jpg</h1>
+</div>
+
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Array image Opencv</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <textarea name="10" id="" cols="50" rows="30"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-success">
+                    </div>
+                </form>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Hasil Image jpg</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

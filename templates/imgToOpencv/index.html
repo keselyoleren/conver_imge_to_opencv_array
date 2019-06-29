@@ -1,0 +1,105 @@
+{% extends 'layouts/main.html' %}
+{% block content %}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Image jpg to array opencv</h1>
+</div>
+
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Image Jpg .etc</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input id="fileInput" class="form-control" type="file" name="image" id="">
+                    </div>
+                    <div class="form-group">
+                        <input id="url" class="form-control" type="text" name="image" id="">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-success">
+                    </div>
+                </form>
+                <img id="imageSrc" width="400" height="200" />
+            </ul>
+        </div>
+    </div>
+    
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Array Image Opencv</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+                <textarea name="10" id="" cols="50" rows="30">{{ result }}</textarea>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+    var btnFile = document.getElementById("fileInput");
+    addEvents(btnFile, "change", function (event) {
+        if (event.target.files.length !== 0) {
+            var file = event.target.files[0];
+            if (file.type.match("image.*")) {
+                var fl = new FileReader();
+                addEvents(fl, "load", function (evt) {
+                    try {
+                        var dataURL = evt.target.result;
+                        var a = document.getElementById('url').value = dataURL
+                        document.getElementById("imageSrc").src = dataURL;
+                    } catch (e) {
+                        alert(e);
+                    }
+
+                });
+                fl.readAsDataURL(file);
+            } else {
+                alert("Please select a IMAGE FILE");
+            }
+        }
+
+    });
+
+    function addEvents(obj, evtName, func) {
+        if (obj.addEventListener !== undefined && obj.addEventListener !== null) {
+            obj.addEventListener(evtName, func, false);
+        } else if (obj.attachEvent !== undefined && obj.attachEvent !== null) {
+            obj.attachEvent(evtName, func);
+        } else {
+            if (this.getAttribute("on" + evtName) !== undefined) {
+                obj["on" + evtName] = func;
+            } else {
+                obj[evtName] = func;
+            }
+        }
+
+    }
+
+    function removeEvents(obj, evtName, func) {
+        if (obj.removeEventListener !== undefined && obj.removeEventListener !== null) {
+            obj.removeEventListener(evtName, func, false);
+        } else if (obj.detachEvent !== undefined && obj.detachEvent !== null) {
+            obj.detachEvent(evtName, func);
+        } else {
+            if (this.getAttribute("on" + evtName) !== undefined) {
+                obj["on" + evtName] = null;
+            } else {
+                obj[evtName] = null;
+            }
+        }
+
+    }
+</script>
+
+{% endblock %}

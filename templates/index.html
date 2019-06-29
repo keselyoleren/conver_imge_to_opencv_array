@@ -1,0 +1,32 @@
+{% extends 'layouts/main.html' %}
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Applikasi conversi array image opencv to jpg dan sebaliknya</h1>
+</div>
+
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Image Opencv To jpg</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+            </ul>
+            <a href="{% url 'opencv-to-image' %}" type="button" class="btn btn-lg btn-block btn-primary">Get started</a>
+        </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Image jpg to Opencv</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+            </ul>
+            <a href="{% url 'image-to-opencv' %}" type="button" class="btn btn-lg btn-block btn-primary">Get started</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
